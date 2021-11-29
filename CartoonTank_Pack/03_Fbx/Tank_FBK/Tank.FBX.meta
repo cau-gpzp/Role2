@@ -1,0 +1,170 @@
+fileFormatVersion: 2
+guid: c5718cce4405848449d2482a3e6fadc6
+labels:
+- Tank
+- Character
+timeCreated: 1466918728
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Cannon_A
+    100002: Cannon_B
+    100004: Cannon_C
+    100006: Cannon_D
+    100008: Cannon_E
+    100010: Muffler_A
+    100012: Muffler_B
+    100014: Muffler_C
+    100016: Parts_bag
+    100018: Parts_Body_Shield
+    100020: Parts_Front_Iron
+    100022: Parts_Hammer
+    100024: Parts_Head_Shield
+    100026: //RootNode
+    100028: Tank_Head
+    100030: Tank_Marker
+    100032: Wheel_A
+    100034: Wheel_B
+    100036: Wheel_C
+    400000: Cannon_A
+    400002: Cannon_B
+    400004: Cannon_C
+    400006: Cannon_D
+    400008: Cannon_E
+    400010: Muffler_A
+    400012: Muffler_B
+    400014: Muffler_C
+    400016: Parts_bag
+    400018: Parts_Body_Shield
+    400020: Parts_Front_Iron
+    400022: Parts_Hammer
+    400024: Parts_Head_Shield
+    400026: //RootNode
+    400028: Tank_Head
+    400030: Tank_Marker
+    400032: Wheel_A
+    400034: Wheel_B
+    400036: Wheel_C
+    2300000: Cannon_A
+    2300002: Cannon_B
+    2300004: Cannon_C
+    2300006: Cannon_D
+    2300008: Cannon_E
+    2300010: Muffler_A
+    2300012: Muffler_B
+    2300014: Muffler_C
+    2300016: Parts_bag
+    2300018: Parts_Body_Shield
+    2300020: Parts_Front_Iron
+    2300022: Parts_Hammer
+    2300024: Parts_Head_Shield
+    2300026: //RootNode
+    2300028: Tank_Head
+    2300030: Tank_Marker
+    2300032: Wheel_A
+    2300034: Wheel_B
+    2300036: Wheel_C
+    3300000: Cannon_A
+    3300002: Cannon_B
+    3300004: Cannon_C
+    3300006: Cannon_D
+    3300008: Cannon_E
+    3300010: Muffler_A
+    3300012: Muffler_B
+    3300014: Muffler_C
+    3300016: Parts_bag
+    3300018: Parts_Body_Shield
+    3300020: Parts_Front_Iron
+    3300022: Parts_Hammer
+    3300024: Parts_Head_Shield
+    3300026: //RootNode
+    3300028: Tank_Head
+    3300030: Tank_Marker
+    3300032: Wheel_A
+    3300034: Wheel_B
+    3300036: Wheel_C
+    4300000: Tank_Body
+    4300002: Muffler_A
+    4300004: Tank_Head
+    4300006: Cannon_A
+    4300008: Tank_Marker
+    4300010: Cannon_E
+    4300012: Cannon_D
+    4300014: Cannon_C
+    4300016: Cannon_B
+    4300018: Parts_Head_Shield
+    4300020: Wheel_A
+    4300022: Wheel_B
+    4300024: Wheel_C
+    4300026: Muffler_C
+    4300028: Muffler_B
+    4300030: Parts_Hammer
+    4300032: Parts_bag
+    4300034: Parts_Body_Shield
+    4300036: Parts_Front_Iron
+    9500000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

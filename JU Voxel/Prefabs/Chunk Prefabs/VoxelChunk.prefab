@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3329748799498897736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3329748799498897742}
+  - component: {fileID: 7771323539421137677}
+  m_Layer: 0
+  m_Name: VoxelChunk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3329748799498897742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3329748799498897736}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7771323539421137677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3329748799498897736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640ce909cea6bed4cb195242d1a34543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GenerateInfiniteChunks: 1
+  DistanceToGenerateChunk: 8
+  GenerateOnStart: 1
+  Type: 1
+  PlayerLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  FistBlock: {fileID: 3442243889178893636, guid: b6def6cfc19dd3349b8da120ac368983,
+    type: 3}
+  MidBlock: {fileID: 3821051426149847097, guid: edb1b5d5a558ade40886fb2571283dad,
+    type: 3}
+  LastBlock: {fileID: 3821051426149847097, guid: 41b1f588dcfd5c24d927ad36cb74d371,
+    type: 3}
+  ChunkRight: {fileID: 0}
+  ChunkLeft: {fileID: 0}
+  ChunkForward: {fileID: 0}
+  ChunkBackward: {fileID: 0}
+  ChunkRightBack: {fileID: 0}
+  ChunkLeftBack: {fileID: 0}
+  ChunkRightForward: {fileID: 0}
+  ChunkLeftForward: {fileID: 0}
+  Length: 30
+  Width: 30
+  Height: 3
+  UsePerlingNoise: 1
+  FrequenceNoise: 8
+  AmplitudeNoise: 5
+  GrassBlock: {fileID: 2988717949973406392, guid: ff4c6e1e8d5b60f48be7e16356c81ba7,
+    type: 3}
+  TreeBlock: {fileID: 3580409187271834595, guid: f7efb3cd2e804a745b48642beebe33cf,
+    type: 3}
+  VegetationSettings:
+    EnableGrass: 1
+    FrequenceGrass: 1.5
+    AmplitudeGrass: 4
+    MinGrassScale: 0.4
+    MaxGrassScale: 0.8
+    MinGrassHeight: 0.1
+    MaxGrassHeight: 0.328
+    EnableTrees: 1
+    FrequenceTree: 0.28
+    AmplitudeTree: 5
+    MinTreeScale: 0.625
+    MaxTreeScale: 1
+    MinTreeHeight: 0.708
+    MaxTreeHeight: 1
+  EnableTerrainPreview: 1
+  PreviewSettings:
+    PreviewColor: {r: 1, g: 1, b: 1, a: 1}
+    DrawTerrain: 0
+    ShowGenerateAreas: 1
+    ShowTerrain: 1
+    ShowGrass: 1
+    ShowTrees: 1
+  Parent: {fileID: 0}
