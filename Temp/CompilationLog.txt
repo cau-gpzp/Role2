@@ -1,0 +1,10 @@
+# Starting compiling KartGame.dll
+/Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-e363adee18e974b8d830c406f4e76dca
+# Starting compiling UnityEditor.Purchasing.dll
+/Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-d67e4c952350541d3becc6ad1444654c
+# Starting compiling KartGame.AI.dll
+/Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-6c180a096771c4dc5b4546e69f85e78c
+# Starting compiling KartGame.Editor.dll
+/Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-d8663d996a402481a8056f76bcdec18b
+# Starting compiling KartGame.AI.Editor.dll
+/Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-dda41404f285141fa99b10ee1d130b99
