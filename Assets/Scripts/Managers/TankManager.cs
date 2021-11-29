@@ -21,6 +21,7 @@ public class TankManager
     private TankShooting m_Shooting;                        // TankShooting 스크립트 레퍼런스(컨트롤 가능 여부)
     private GameObject m_CanvasGameObject;                  // 라운드마다 world space UI를 끄는데 사용
 
+    private TankShooting ts;
 
     public void Setup ()
     {
@@ -64,6 +65,7 @@ public class TankManager
         m_Shooting.enabled = true;
 
         m_CanvasGameObject.SetActive (true);
+        m_Shooting.On();
     }
 
 

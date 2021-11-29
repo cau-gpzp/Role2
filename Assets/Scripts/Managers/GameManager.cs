@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public int m_NumRoundsToWin = 5;            // 게임의 전체 판 수
-    public float m_StartDelay = 3f;             // RoudStarting과 RoundPlaying 사이의 대기시간 
+    public float m_StartDelay = .3f;             // RoudStarting과 RoundPlaying 사이의 대기시간 
     public float m_EndDelay = 3f;               // RoundPlaying과 RoundEnding 사이의 대기 시간
     public CameraControl m_CameraControl;       // CameraControl 스크립트의 레퍼런스
     public Text m_MessageText;                  // 승리 메시지 등을 내 보낼 텍스트 레퍼런스   
@@ -19,9 +19,19 @@ public class GameManager : MonoBehaviour
     private TankManager m_RoundWinner;          // 현재의 판에 누가 이겼는가에 대한 매니저 레퍼런스
     private TankManager m_GameWinner;           // 게임 전체를 누가 이겼는가에 대한 매니저 레퍼런스
 
+    //게임 턴제를 위한 시간 설정
+    private float time_start;
+    private float time_current;
+    private float time_Max = 15.0f;
+    private bool isEnded;
+
+    int prevTurn, curTurn;
+
     // 게임 시작을 위한 초기 세팅 + 게임 시작
     private void Start()
     {
+        curTurn = 0;
+         
         m_StartWait = new WaitForSeconds (m_StartDelay); // 시작 딜레이 지정
         m_EndWait = new WaitForSeconds (m_EndDelay); // 엔딩 딜레이 지정
 
@@ -41,6 +51,8 @@ public class GameManager : MonoBehaviour
         {
             m_Tanks[i].m_Instance =
                 Instantiate(m_TankPrefab, m_Tanks[i].m_SpawnPoint.position, m_Tanks[i].m_SpawnPoint.rotation) as GameObject;
+            TankShooting ts = m_Tanks[i].m_Instance.GetComponent<TankShooting>();
+            ts.TurnNext += TurnNext;
             m_Tanks[i].m_PlayerNumber = i + 1;
             m_Tanks[i].Setup();
         }
@@ -108,18 +120,32 @@ public class GameManager : MonoBehaviour
         yield return m_StartWait;
     }
 
+    void TurnNext()
+    {
+        Reset_Timer();
+
+        prevTurn = curTurn;
+        curTurn = (curTurn + 1) % m_Tanks.Length;
+        m_Tanks[prevTurn].DisableControl();
+        m_Tanks[curTurn].EnableControl();
+    }
+
 
     private IEnumerator RoundPlaying ()
     {
         // As soon as the round begins playing let the players control the tanks.
-        EnableTankControl ();
-
+        // EnableTankControl ();
+        Reset_Timer();
+ 
         // Clear the text from the screen.
         m_MessageText.text = string.Empty;
+        m_Tanks[curTurn].EnableControl();
 
         // While there is not one tank left...
         while (!OneTankLeft())
         {
+            if (Check_Timer()) TurnNext();
+
             // ... return on the next frame.
             yield return null;
         }
@@ -257,5 +283,26 @@ public class GameManager : MonoBehaviour
         {
             m_Tanks[i].DisableControl();
         }
+    }
+
+    private void Reset_Timer()
+    {
+        time_start = Time.time;
+        time_current = 0;
+        //text_Timer.text = $"{time_current:N2}";
+        isEnded = false;
+        Debug.Log("Start");
+    }
+
+    private bool Check_Timer()
+    {
+        time_current = Time.time - time_start;
+        if (time_current < time_Max)
+        {
+            m_MessageText.text = $"{time_current:N2}";
+
+            return false;
+        }
+        else return true;
     }
 }

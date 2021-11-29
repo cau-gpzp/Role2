@@ -28,6 +28,12 @@ public class ShellExplosion : MonoBehaviour
         {
             // ... and find their rigidbody.
             Rigidbody targetRigidbody = colliders[i].GetComponent<Rigidbody> ();
+            GameObject target = colliders[i].gameObject;
+
+            Debug.Log(target.name);
+
+            if (target.tag == "obstacle")
+                Destroy(target.gameObject);
 
             // If they don't have a rigidbody, go on to the next collider.
             if (!targetRigidbody)
@@ -48,6 +54,7 @@ public class ShellExplosion : MonoBehaviour
 
             // Deal this damage to the tank.
             targetHealth.TakeDamage (damage);
+
         }
 
         // Unparent the particles from the shell.

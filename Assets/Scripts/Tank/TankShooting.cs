@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class TankShooting : MonoBehaviour
 {
+    public UnityAction TurnNext;
+
     public int m_PlayerNumber = 1;              // Used to identify the different players.
     public Rigidbody m_Shell;                   // Prefab of the shell.
     public Transform m_FireTransform;           // A child of the tank where the shells are spawned.
@@ -20,6 +23,12 @@ public class TankShooting : MonoBehaviour
     private float m_ChargeSpeed;                // How fast the launch force increases, based on the max charge time.
     private bool m_Fired;                       // Whether or not the shell has been launched with this button press.
 
+    private bool shot;
+
+    public void On()
+    {
+        shot = false;
+    }
 
     private void OnEnable()
     {
@@ -31,6 +40,7 @@ public class TankShooting : MonoBehaviour
 
     private void Start ()
     {
+        shot = false;
         // The fire axis is based on the player number.
         m_FireButton = "Fire" + m_PlayerNumber;
 
@@ -45,7 +55,7 @@ public class TankShooting : MonoBehaviour
         m_AimSlider.value = m_MinLaunchForce;
 
         // If the max force has been exceeded and the shell hasn't yet been launched...
-        if (m_CurrentLaunchForce >= m_MaxLaunchForce && !m_Fired)
+        if (!shot && m_CurrentLaunchForce >= m_MaxLaunchForce && !m_Fired)
         {
             // ... use the max force and launch the shell.
             m_CurrentLaunchForce = m_MaxLaunchForce;
@@ -71,7 +81,7 @@ public class TankShooting : MonoBehaviour
             m_AimSlider.value = m_CurrentLaunchForce;
         }
         // Otherwise, if the fire button is released and the shell hasn't been launched yet...
-        else if (Input.GetButtonUp (m_FireButton) && !m_Fired)
+        else if (!shot && Input.GetButtonUp (m_FireButton) && !m_Fired)
         {
             // ... launch the shell.
             Fire ();
@@ -83,6 +93,7 @@ public class TankShooting : MonoBehaviour
     {
         // Set the fired flag so only Fire is only called once.
         m_Fired = true;
+        shot = true;
 
         // Create an instance of the shell and store a reference to it's rigidbody.
         Rigidbody shellInstance =
@@ -97,5 +108,6 @@ public class TankShooting : MonoBehaviour
 
         // Reset the launch force.  This is a precaution in case of missing button events.
         m_CurrentLaunchForce = m_MinLaunchForce;
+        TurnNext?.Invoke();
     }
 }
