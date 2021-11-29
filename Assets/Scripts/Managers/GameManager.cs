@@ -4,42 +4,41 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public int m_NumRoundsToWin = 5;            // The number of rounds a single player has to win to win the game.
-    public float m_StartDelay = 3f;             // The delay between the start of RoundStarting and RoundPlaying phases.
-    public float m_EndDelay = 3f;               // The delay between the end of RoundPlaying and RoundEnding phases.
-    public CameraControl m_CameraControl;       // Reference to the CameraControl script for control during different phases.
-    public Text m_MessageText;                  // Reference to the overlay Text to display winning text, etc.
-    public GameObject m_TankPrefab;             // Reference to the prefab the players will control.
+    public int m_NumRoundsToWin = 5;            // 게임의 전체 판 수
+    public float m_StartDelay = 3f;             // RoudStarting과 RoundPlaying 사이의 대기시간 
+    public float m_EndDelay = 3f;               // RoundPlaying과 RoundEnding 사이의 대기 시간
+    public CameraControl m_CameraControl;       // CameraControl 스크립트의 레퍼런스
+    public Text m_MessageText;                  // 승리 메시지 등을 내 보낼 텍스트 레퍼런스   
+    public GameObject m_TankPrefab;             // 탱크 프리팹 레퍼런스
     public TankManager[] m_Tanks;               // A collection of managers for enabling and disabling different aspects of the tanks.
 
 
-    private int m_RoundNumber;                  // Which round the game is currently on.
-    private WaitForSeconds m_StartWait;         // Used to have a delay whilst the round starts.
-    private WaitForSeconds m_EndWait;           // Used to have a delay whilst the round or game ends.
-    private TankManager m_RoundWinner;          // Reference to the winner of the current round.  Used to make an announcement of who won.
-    private TankManager m_GameWinner;           // Reference to the winner of the game.  Used to make an announcement of who won.
+    private int m_RoundNumber;                  // 현재 라운드 수
+    private WaitForSeconds m_StartWait;         // 라운드가 시작되는 동안 사용되는 딜레이 
+    private WaitForSeconds m_EndWait;           // 라운드가 시작되는 동안 사용되는 딜레이 
+    private TankManager m_RoundWinner;          // 현재의 판에 누가 이겼는가에 대한 매니저 레퍼런스
+    private TankManager m_GameWinner;           // 게임 전체를 누가 이겼는가에 대한 매니저 레퍼런스
 
-
+    // 게임 시작을 위한 초기 세팅 + 게임 시작
     private void Start()
     {
-        // Create the delays so they only have to be made once.
-        m_StartWait = new WaitForSeconds (m_StartDelay);
-        m_EndWait = new WaitForSeconds (m_EndDelay);
+        m_StartWait = new WaitForSeconds (m_StartDelay); // 시작 딜레이 지정
+        m_EndWait = new WaitForSeconds (m_EndDelay); // 엔딩 딜레이 지정
 
-        SpawnAllTanks();
-        SetCameraTargets();
+        SpawnAllTanks(); // 탱크 스폰
+        SetCameraTargets(); // 카메라 세팅
 
-        // Once the tanks have been created and the camera is using them as targets, start the game.
+        // 게임 시작: 코루틴 반복
         StartCoroutine (GameLoop ());
     }
 
 
+    // 모든 탱크를 지정된 위치와 방향에 스폰 및 값 세팅
     private void SpawnAllTanks()
     {
-        // For all the tanks...
+        
         for (int i = 0; i < m_Tanks.Length; i++)
         {
-            // ... create them, set their player number and references needed for control.
             m_Tanks[i].m_Instance =
                 Instantiate(m_TankPrefab, m_Tanks[i].m_SpawnPoint.position, m_Tanks[i].m_SpawnPoint.rotation) as GameObject;
             m_Tanks[i].m_PlayerNumber = i + 1;
