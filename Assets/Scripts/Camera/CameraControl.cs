@@ -14,6 +14,10 @@ public class CameraControl : MonoBehaviour
     private Vector3 m_DesiredPosition;              // The position the camera is moving towards.
 
 
+    public void Off() {
+        m_Camera.depth = -1;
+    }
+
     private void Awake ()
     {
         m_Camera = GetComponentInChildren<Camera> ();
@@ -117,6 +121,7 @@ public class CameraControl : MonoBehaviour
 
     public void SetStartPositionAndSize ()
     {
+        m_Camera.depth = 1;
         // Find the desired position.
         FindAveragePosition ();
 

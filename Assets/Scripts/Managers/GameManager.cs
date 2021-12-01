@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public int m_NumRoundsToWin = 5;            // 게임의 전체 판 수
-    public float m_StartDelay = 1f;             // RoudStarting과 RoundPlaying 사이의 대기시간 
+    public float m_StartDelay = 3f;             // RoudStarting과 RoundPlaying 사이의 대기시간 
     public float m_EndDelay = 3f;               // RoundPlaying과 RoundEnding 사이의 대기 시간
     public CameraControl m_CameraControl;       // CameraControl 스크립트의 레퍼런스
     public Text m_MessageText;                  // 승리 메시지 등을 내 보낼 텍스트 레퍼런스   
@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
     // 모든 탱크를 지정된 위치와 방향에 스폰 및 값 세팅
     private void SpawnAllTanks()
     {
-
         for (int i = 0; i < m_Tanks.Length; i++)
         {
             m_Tanks[i].m_Instance =
@@ -56,6 +55,9 @@ public class GameManager : MonoBehaviour
             m_Tanks[i].m_PlayerNumber = i + 1;
             m_Tanks[i].Setup();
         }
+
+        m_Tanks[0].m_Instance.GetComponent<TankProperties>().SetRect(new Rect(0.0f, 0.0f, 0.5f, 1.0f));
+        m_Tanks[1].m_Instance.GetComponent<TankProperties>().SetRect(new Rect(0.5f, 0.0f, 1.0f, 1.0f));
     }
 
 
@@ -133,6 +135,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator RoundPlaying()
     {
+        m_CameraControl.Off();
         // As soon as the round begins playing let the players control the tanks.
         // EnableTankControl ();
         Reset_Timer();

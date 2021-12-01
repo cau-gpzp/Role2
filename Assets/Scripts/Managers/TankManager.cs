@@ -23,12 +23,15 @@ public class TankManager
 
     private TankShooting ts;
 
+    AudioListener m_audio;
+
     public void Setup()
     {
         // 컴포넌트들에 대한 레퍼런스 받아옴
         m_Movement = m_Instance.GetComponent<TankMovement>();
         m_Shooting = m_Instance.GetComponent<TankShooting>();
         m_CanvasGameObject = m_Instance.GetComponentInChildren<Canvas>().gameObject;
+        // m_audio = m_Instance.GetComponent<Camera>().GetComponent<AudioListener>();
 
         // 스크립트에 이 플레이어의 번호를 세팅
         m_Movement.m_PlayerNumber = m_PlayerNumber;
@@ -55,6 +58,7 @@ public class TankManager
         m_Shooting.enabled = false;
 
         m_CanvasGameObject.SetActive(false);
+        // m_audio.enabled = false;
     }
 
 
@@ -66,6 +70,7 @@ public class TankManager
 
         m_CanvasGameObject.SetActive(true);
         m_Shooting.On();
+        // m_audio.enabled = true;
     }
 
 

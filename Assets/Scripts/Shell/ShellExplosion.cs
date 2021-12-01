@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class ShellExplosion : MonoBehaviour
 {
+    public UnityAction TurnNext;
+
     public LayerMask m_TankMask;                        // Used to filter what the explosion affects, this should be set to "Players".
     public ParticleSystem m_ExplosionParticles;         // Reference to the particles that will play on explosion.
     public AudioSource m_ExplosionAudio;                // Reference to the audio that will play on explosion.
@@ -16,7 +19,10 @@ public class ShellExplosion : MonoBehaviour
         // If it isn't destroyed by then, destroy the shell after it's lifetime.
         Destroy(gameObject, m_MaxLifeTime);
     }
-
+    
+    void OnDestroy() {
+        TurnNext?.Invoke();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,11 +36,9 @@ public class ShellExplosion : MonoBehaviour
             Rigidbody targetRigidbody = colliders[i].GetComponent<Rigidbody>();
             GameObject target = colliders[i].gameObject;
 
-            Debug.Log(target.name);
-
             if (System.String.Compare(target.tag, "Obstacle") == 0)
             {
-                Debug.Log("asdf");
+                Debug.Log(target.name);
                 Destroy(target.gameObject);
             }
 

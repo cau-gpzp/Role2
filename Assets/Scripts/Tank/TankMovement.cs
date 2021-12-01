@@ -18,12 +18,9 @@ public class TankMovement : MonoBehaviour
     private float m_TurnInputValue;             // The current value of the turn input.
     private float m_OriginalPitch;              // The pitch of the audio source at the start of the scene.
 
-    private bool flag;
-
     private void Awake ()
     {
         m_Rigidbody = GetComponent<Rigidbody> ();
-        flag = true;
     }
 
 
