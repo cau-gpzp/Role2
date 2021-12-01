@@ -18,6 +18,10 @@ public class CameraControl : MonoBehaviour
         m_Camera.depth = -1;
     }
 
+    public void On() {
+        m_Camera.depth = 1;
+    }
+
     private void Awake ()
     {
         m_Camera = GetComponentInChildren<Camera> ();
@@ -121,7 +125,6 @@ public class CameraControl : MonoBehaviour
 
     public void SetStartPositionAndSize ()
     {
-        m_Camera.depth = 1;
         // Find the desired position.
         FindAveragePosition ();
 

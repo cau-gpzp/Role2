@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject m_TankPrefab;             // 탱크 프리팹 레퍼런스
     public TankManager[] m_Tanks;               // A collection of managers for enabling and disabling different aspects of the tanks.
 
+    public GameObject obstacle;
+    private GameObject obstacleInstance;
 
     private int m_RoundNumber;                  // 현재 라운드 수
     private WaitForSeconds m_StartWait;         // 라운드가 시작되는 동안 사용되는 딜레이 
@@ -107,6 +109,9 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator RoundStarting()
     {
+        obstacleInstance = Instantiate(obstacle, new Vector3(0f, 0f, 0f), transform.rotation);
+
+        m_CameraControl.On();
         // As soon as the round starts reset the tanks and make sure they can't move.
         ResetAllTanks();
         DisableTankControl();
@@ -135,6 +140,9 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator RoundPlaying()
     {
+        curTurn = 1;
+        TurnNext();
+
         m_CameraControl.Off();
         // As soon as the round begins playing let the players control the tanks.
         // EnableTankControl ();
@@ -157,6 +165,9 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator RoundEnding()
     {
+        Destroy(obstacleInstance);
+        m_CameraControl.On();
+
         // Stop tanks from moving.
         DisableTankControl();
 

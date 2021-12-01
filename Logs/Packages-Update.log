@@ -59,3 +59,15 @@ The following packages were added:
   com.unity.postprocessing@2.3.0
   com.unity.purchasing@3.2.2
   com.unity.xr.legacyinputhelpers@2.1.7
+
+=== Wed Dec  1 17:07:02 2021
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.ads from version 3.7.1 to 3.7.5
+  com.unity.analytics from version 3.5.3 to 3.6.11
+  com.unity.collab-proxy from version 1.13.5 to 1.15.1
+  com.unity.purchasing from version 3.2.2 to 4.0.3
+  com.unity.xr.legacyinputhelpers from version 2.1.7 to 2.1.8
