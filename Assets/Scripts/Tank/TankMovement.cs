@@ -3,7 +3,7 @@
 public class TankMovement : MonoBehaviour
 {
     public int m_PlayerNumber = 1;              // Used to identify which tank belongs to which player.  This is set by this tank's manager.
-    public float m_Speed = 12f;                 // How fast the tank moves forward and back.
+    public float m_Speed = 1f;                 // How fast the tank moves forward and back.
     public float m_TurnSpeed = 180f;            // How fast the tank turns in degrees per second.
     public AudioSource m_MovementAudio;         // Reference to the audio source used to play engine sounds. NB: different to the shooting audio source.
     public AudioClip m_EngineIdling;            // Audio to play when the tank isn't moving.
@@ -18,10 +18,12 @@ public class TankMovement : MonoBehaviour
     private float m_TurnInputValue;             // The current value of the turn input.
     private float m_OriginalPitch;              // The pitch of the audio source at the start of the scene.
 
+    private bool flag;
 
     private void Awake ()
     {
         m_Rigidbody = GetComponent<Rigidbody> ();
+        flag = true;
     }
 
 
@@ -34,7 +36,6 @@ public class TankMovement : MonoBehaviour
         m_MovementInputValue = 0f;
         m_TurnInputValue = 0f;
     }
-
 
     private void OnDisable ()
     {

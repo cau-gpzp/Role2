@@ -21,13 +21,14 @@ public class TankManager
     private TankShooting m_Shooting;                        // TankShooting 스크립트 레퍼런스(컨트롤 가능 여부)
     private GameObject m_CanvasGameObject;                  // 라운드마다 world space UI를 끄는데 사용
 
+    private TankShooting ts;
 
-    public void Setup ()
+    public void Setup()
     {
         // 컴포넌트들에 대한 레퍼런스 받아옴
-        m_Movement = m_Instance.GetComponent<TankMovement> ();
-        m_Shooting = m_Instance.GetComponent<TankShooting> ();
-        m_CanvasGameObject = m_Instance.GetComponentInChildren<Canvas> ().gameObject;
+        m_Movement = m_Instance.GetComponent<TankMovement>();
+        m_Shooting = m_Instance.GetComponent<TankShooting>();
+        m_CanvasGameObject = m_Instance.GetComponentInChildren<Canvas>().gameObject;
 
         // 스크립트에 이 플레이어의 번호를 세팅
         m_Movement.m_PlayerNumber = m_PlayerNumber;
@@ -37,7 +38,7 @@ public class TankManager
         m_ColoredPlayerText = "<color=#" + ColorUtility.ToHtmlStringRGB(m_PlayerColor) + ">PLAYER " + m_PlayerNumber + "</color>";
 
         // 탱크를 구성하는 모든 렌더러들을 얻어 옴
-        MeshRenderer[] renderers = m_Instance.GetComponentsInChildren<MeshRenderer> ();
+        MeshRenderer[] renderers = m_Instance.GetComponentsInChildren<MeshRenderer>();
 
         // 모든 렌더러의 색을 플레이어의 색으로 바꿈
         for (int i = 0; i < renderers.Length; i++)
@@ -48,34 +49,35 @@ public class TankManager
 
 
     // 조작 불가능 메소드
-    public void DisableControl ()
+    public void DisableControl()
     {
         m_Movement.enabled = false;
         m_Shooting.enabled = false;
 
-        m_CanvasGameObject.SetActive (false);
+        m_CanvasGameObject.SetActive(false);
     }
 
 
     // 조작 가능 메소드
-    public void EnableControl ()
+    public void EnableControl()
     {
         m_Movement.enabled = true;
         m_Shooting.enabled = true;
 
-        m_CanvasGameObject.SetActive (true);
+        m_CanvasGameObject.SetActive(true);
+        m_Shooting.On();
     }
 
 
     // Used at the start of each round to put the tank into it's default state.
     // 탱크의 스크립트와 UI를 모두 멈췄다 작동했다 할 수 있습니다.
     // 위치도 스폰포인트로 옮기고 인스턴스 자체를 껐다가 켜서 새로 시작할 수 있게 합니다.
-    public void Reset ()
+    public void Reset()
     {
         m_Instance.transform.position = m_SpawnPoint.position;
         m_Instance.transform.rotation = m_SpawnPoint.rotation;
 
-        m_Instance.SetActive (false);
-        m_Instance.SetActive (true);
+        m_Instance.SetActive(false);
+        m_Instance.SetActive(true);
     }
 }
